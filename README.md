@@ -1,24 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dev enviroment
 
-Things you may want to cover:
+Application is configured to run in a docker container. To build dev environment, start the server, and setup the DB:
 
-* Ruby version
+'''
+docker-compose build
+docker-compose up
+'''
 
-* System dependencies
+In another terminal run:
+'''
+docker-compose run web rake db:create
+'''
 
-* Configuration
+## Testing
+To run tests:
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+'''
+docker-compose run web rails test
+'''
