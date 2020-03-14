@@ -17,4 +17,10 @@ class TicketsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response 201
   end
+
+  test 'running count webhook scheduling' do
+    assert_enqueued_with(job: RunningCountWebhookJob) do
+      post tickets_url, params: { tags: ["tag1", "tag2"], ticket: { title: "test", user_id: 1 } }, as: :json
+    end
+  end
 end

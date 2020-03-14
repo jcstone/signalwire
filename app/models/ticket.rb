@@ -4,7 +4,7 @@ class Ticket < ApplicationRecord
   validates :title, :user_id, presence: true
   validate :maximum_tags
 
-  # setup getter and setter for all_tags virtual attribute so we can bulk save tags on the ticket object
+  # setup getter and setter for all_tags virtual attribute so we can "bulk save" (not really) tags on the ticket object
   def all_tags=(tags)
     tags.each do |name|
       tag = Tag.find_or_create_by(name: name.downcase)
